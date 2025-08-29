@@ -178,6 +178,9 @@ const itemNameContainer = document.getElementById('itemNameContainer');
 const barcodeContainer = document.getElementById('barcodeContainer');
 const detailsLabel = document.getElementById('detailsLabel') as HTMLLabelElement;
 const itemNameInput = document.getElementById('itemName') as HTMLInputElement;
+const barcodeHelpIcon = document.getElementById('barcodeHelpIcon');
+const barcodeHelpModal = document.getElementById('barcodeHelpModal');
+const closeModalButton = document.getElementById('closeModalButton');
 
 
 // --- LANGUAGE FUNCTIONS ---
@@ -319,6 +322,20 @@ feedbackForm?.addEventListener('submit', async (event) => {
 });
 
 resetFormButton?.addEventListener('click', () => resetUI());
+
+barcodeHelpIcon?.addEventListener('click', () => {
+    barcodeHelpModal?.classList.remove('hidden');
+});
+
+closeModalButton?.addEventListener('click', () => {
+    barcodeHelpModal?.classList.add('hidden');
+});
+
+barcodeHelpModal?.addEventListener('click', (event) => {
+    if (event.target === barcodeHelpModal) {
+        barcodeHelpModal.classList.add('hidden');
+    }
+});
 
 // --- UI HELPER FUNCTIONS ---
 function setLoadingState(isLoading: boolean) {
